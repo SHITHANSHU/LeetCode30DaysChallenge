@@ -42,6 +42,9 @@ if the value is true then we have to look into the left side of the array i.e. v
 now we will be using a binary search approch but unlike binary search we will keep on drilling 
 untill we reach a point in which we dont move 
 
+
+Time Complexity     O(log(n))
+Space Complexity    O(1)
 */
 
 
