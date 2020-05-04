@@ -76,7 +76,9 @@ find x ->
 
         i.e. 1^0=1  1   1^1=0
 
-        so xor with 1 will return the compliment value  
+        so xor with 1 will return the compliment value 
+
+        Time Comlexity O(log(n))  
 
 */
 
