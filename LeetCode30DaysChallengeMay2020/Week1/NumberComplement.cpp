@@ -78,7 +78,9 @@ find x ->
 
         so xor with 1 will return the compliment value 
 
-        Time Comlexity O(log(n))  
+        Time Comlexity O(log(n)) 
+
+        Space Complexity O(1) 
 
 */
 
