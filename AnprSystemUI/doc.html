@@ -1,0 +1,180 @@
+<!-- https://drive.google.com/open?id=1jWYS-dV0wGZEJPQyZ12Or_zP1fZmodUd -->
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    <script>
+        function resizeIframe(obj) {
+          obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+        }
+      </script>
+</head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+
+<style>
+
+    .heading{
+        background-color: #0073b1;
+        color: azure;
+    }
+    .fa-trash 
+    {
+        color: azure;
+    }
+    .fa-edit
+    {
+        color: azure;
+    }
+    .form-inline
+    {
+        align-content: center;
+    }
+    .btn-outline-primary:hover 
+    {
+        background-color: #0073b1;
+    }
+
+    
+    .btn-primary:hover 
+    {
+        background-color: #0073b1;
+    }
+    
+    .btn-primary
+    {
+        color: #0073b1;
+        background-color:azure;
+    }
+
+    body.modal-open .background-container{
+    -webkit-filter: blur(4px);
+    -moz-filter: blur(4px);
+    -o-filter: blur(4px);
+    -ms-filter: blur(4px);
+    filter: blur(4px);
+}
+
+    .modal-title{
+        align-content: center;
+    }
+    #myModalLabel{
+        align-content: center;
+    }
+    .modal-header{
+        align-content: center;
+    }
+    .form-control 
+    {
+
+        margin-top: 20px;
+    }
+    .btn-default
+    {
+        margin-top: 20px;
+    }
+
+    .logincontainer
+    {
+        width: 40%;
+        margin-left: 30%;
+        box-shadow: 0 5px 10px 0 rgba(0,0,0,.1);
+        border-radius: 2em;
+        background-color: fafafa;
+
+    }
+
+    
+.input1 
+{
+  width:100%;
+  margin-top: 25%;
+  padding-top: 10%;
+}
+
+.form-control
+{
+    width:80%;
+    margin-left: 10%;
+}
+.one
+{
+    width:40%;
+    margin-top: 10%;
+    margin-left: 30%;
+    
+}
+.two
+{
+    width:40%;
+    margin-top: 10%;
+
+}
+
+.loginhead
+{
+    color: 0073b1;
+    text-align: center;
+}
+
+.xyz1
+{
+    background-color: fafafa !important;
+    border:none;
+    width:50% !important;
+    text-align: center;
+}
+.errmsg
+{
+    color: red;
+    text-align: center !important;
+    /* margin-left: 50% !important; */
+}
+.h6
+{
+    margin-left: 20% !important;
+}
+
+#myIframe
+{
+    margin-left: 15%;
+}
+</style>
+
+<body >
+
+
+<div class="container">
+
+    <div class="heading"><center><h1><strong >ANPR SYSTEM</strong></h1></center>
+    </div>
+    <br>
+
+    <!-- <iframe src="https://docs.google.com/document/d/e/2PACX-1vSxRuFlATs2YxA60SiMt5KpDoeHl-VEBLYjrzaFwj0ZT_pMgjJsHJ33x8Mc8wsr5g/pub?embedded=true" width="100%" frameborder="0" scrolling="no" on=""></iframe> -->
+    <iframe src="https://docs.google.com/document/d/e/2PACX-1vSxRuFlATs2YxA60SiMt5KpDoeHl-VEBLYjrzaFwj0ZT_pMgjJsHJ33x8Mc8wsr5g/pub?embedded=true" id="myIframe" width="70%" height="3200px"></iframe>
+    
+    <script>
+    // Selecting the iframe element
+    var iframe = document.getElementById("myIframe");
+    
+    // Adjusting the iframe height onload event
+    iframe.onload = function(){
+        iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+    }
+    </script>
+</div>
+
+
+
+</body>
+</html>

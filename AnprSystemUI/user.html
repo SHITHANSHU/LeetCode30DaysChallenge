@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+            <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+  </head>
+<script src="app.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
+<style>
+
+.heading{
+        background-color: #0073b1;
+        color: azure;
+        margin-bottom: 0px !important;
+    }
+
+    .heading2{
+        background-color: #000000;
+        color: azure;
+        height: 4em;
+    }
+
+    .fa-trash 
+    {
+        color: azure;
+    }
+    .fa-edit
+    {
+        color: azure;
+    }
+    .form-inline
+    {
+        align-content: center;
+    }
+    .btn-outline-primary:hover 
+    {
+        background-color: #0073b1;
+    }
+
+    
+    .btn-primary:hover 
+    {
+        background-color: #0073b1;
+    }
+    
+    .btn-primary
+    {
+        color: #0073b1;
+        background-color:azure;
+    }
+
+    body.modal-open .background-container{
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+    -ms-filter: blur(2px);
+    filter: blur(2px);
+}
+
+    .modal-title{
+        align-content: center;
+    }
+    #myModalLabel{
+        align-content: center;
+    }
+    .modal-header{
+        align-content: center;
+    }
+    .menu
+    {
+      width: 100%;
+      overflow: auto
+    }
+
+    .menu div
+    { 
+      float: left;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+  width: 25%; /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
+  text-align: center; /* If you want the text to be centered */
+
+    }
+    .menudata
+    {
+      height: 100%;
+    }
+
+    .menu a
+    {
+      height:100%;
+    }
+    .form-inline
+    {
+      width: 100%;
+    }
+    .menudata a
+    {
+      text-decoration: none;
+      color: white;
+      width:100%;
+      height:100%;
+    }
+    .menudata2
+    {
+      background-color: 005391;
+      width:100%;
+      height:100%;
+    }
+    .menudata a:hover
+    {
+      color: 0073b1;
+    }
+
+    .menudata:hover
+    {
+      color: 0073b1;
+      background-color: white;
+    }
+    .active
+    {
+      background-color: 0073b1;
+      color: white;
+    }
+
+
+    .input2 .form-control
+    {
+      width:18.5% !important;
+      height:30% !important;
+    } 
+
+    .input2 .btn-lg
+    {
+      width: 5.3% !important;
+      height: 30% !important;
+    }
+    .xyz1
+{
+    background-color: fafafa !important;
+    border:none;
+    width:30% !important;
+    text-align: center;
+}
+
+#deleteConfirmation2
+{
+    display:block;
+}
+
+ 
+
+/* .input2 .form-control
+{
+  width:16.43%;
+} */
+.input2
+{
+  width: 100%;
+  height: 100%;
+}
+
+.heading h1,h5
+{
+  
+  display: inline;
+}
+.heading h5
+{
+  margin-left:0%;
+}
+
+</style>
+
+<body >
+
+
+
+<div class="container">
+<div ng-app="testApp" ng-controller="userControl">
+
+    
+    <div class="heading"><center><h1><strong >ANPR System User Control Panel<h5> Username - {{loggedinas}}</h5></strong></h1></center>
+        <div class="heading2">
+          <div class="menu">
+            <a href="#!/user" >
+              <div class="menudata2"  >
+  
+  
+                  <center ><h4 >Home</h4></center>
+              
+              
+  
+                
+              </div>
+            </a>
+            
+            <a  data-toggle="modal" data-target="#myModal" ng-Click="reset()">
+              <div class="menudata" >
+  
+                <center><h4 >Register Car</h4></center>
+              </div>
+            </a>
+            <a data-toggle="modal" data-target="#paytoll" ng-Click="reset()">
+              <div class="menudata">
+  
+                <center><h4 >Pay Toll</h4></center>
+              </div>
+            </a>
+            <a ng-Click="del()">
+              <div class="menudata" >
+  
+                <center><h4 >Logout</h4></center>
+              </div>
+            </a>
+            
+            <!-- <div class="menudata">
+              <center><h4 >Add Data</h4></center>
+            </div>
+            <div class="menudata">
+              <center><h4>Register</h4></center>
+            </div>
+            <div class="menudata">
+              <center><h4>Logout</h4></center>
+            </div> -->
+  
+          </div>
+          
+        </div>
+      </div>
+  
+      
+      
+  
+      <br>
+      
+    <form name="form" class="form-inline" >
+
+      <div class="input2">
+        <input type="text"  class="form-control" id="id" placeholder="Search By Number" name="id" ng-model="search.id" />
+        <input type="text"  class="form-control" id="id" placeholder="Search By Name" name="name" ng-model="search.name" />
+        <input type="text"  class="form-control" id="id" placeholder="Search By License" name="license" ng-model="search.license" />
+        <input type="number"  class="form-control" id="id" ng-keyup="numvali()" placeholder="Search By Mobile" name="mobile" ng-model="search.mobile" />
+        <input type="number"  class="form-control" id="id" ng-keyup="numvali2()" placeholder="Search By Toll" name="toll" ng-model="search.toll" />
+        <button type="submit" class="btn btn-primary btn-lg"  ng-Click="refresh()"><i class="fas fa-refresh"></i></button> 
+        
+
+      </div>
+     
+    </form>
+     
+<br>
+<br>
+  <table class="table table-dark table-hover">
+    <!-- <tr>
+      <td><input type="text"  class="form-control" id="id" placeholder="Search By Number" name="id" ng-model="searchid" ></td>
+      <td><input type="text"  class="form-control" id="id" placeholder="Search By Name" name="name" ng-model="searchname" ></td>
+      <td><input type="text"  class="form-control" id="id" placeholder="Search By License" name="license" ng-model="searchlicense" ></td>
+      <td><input type="number"  class="form-control" id="id" placeholder="Search By Mobile" name="mobile" ng-model="searchmobile" ></td>
+      <td><input type="number"  class="form-control" id="id" placeholder="Search By Toll" name="toll" ng-model="searchtoll"></td>
+      <td><button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModal" ng-Click="reset()">Add Data</button></td>
+      <td><button type="submit" class="btn btn-primary "  ng-Click="refresh()"><i class="fas fa-refresh"></i></button> 
+      </td>
+    </tr> -->
+      <tr>
+          <td><strong>Number Plate</strong></td>
+          <td><strong>Name</strong></td>
+          <td><strong>License</strong></td>
+          <td><strong>Mobile</strong></td>
+          <td><strong>Toll</strong></td>
+          <td><strong>Type</strong></td>
+          <td><strong>Edit</strong></td>
+          <td><strong>Delete</strong></td>
+      </tr>
+      <tr ng-repeat="row in data | filter:search">
+          <td>{{row.id}}</td>
+          <td>{{row.name}}</td>
+          <td>{{row.license}}</td>
+          <td>{{row.mobile}}</td>
+          <td>{{row.toll}}</td>
+          <td>{{row.type}}</td>
+          
+        <td> <button type="submit" class="btn btn-default"  ng-Click="editinit(row.id)" data-toggle="modal" data-target="#myModal"><i class="fas fa-edit"></i></button>
+
+
+           
+
+            <td>
+                <button type="submit" class="btn btn-default" data-toggle="modal" data-target="#deleteConfirmation" ng-Click="initiateDelete(row.id,row.toll)" ><i class="fas fa-trash"></i></button>
+  
+            </td>
+      </tr>
+  </table class="table table-dark table-hover">
+
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel" >{{modalMessage}}</h4>
+      
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+        <div class="modal-body">
+
+         
+<form name="form" class="form" >
+    <div class="form-group">
+      <label for="name">Number Plate   :</label>
+      <input type="text" ng-readonly="idReadOnly" ng-keyup="validateId()"  class="form-control" id="id" placeholder="Enter Number Plate" name="id" ng-model="id" >
+
+    </div>
+<br>
+
+<div class="form-group">
+  <label for="name">License:</label>
+  <input type="text"  class="form-control" id="name" placeholder="Enter License" name="name" ng-model="license">
+
+</div>
+
+    <br>
+    <div class="form-group">
+      <label for="name">Mobile:</label>
+      <input type="number" class="form-control" id="mobile" placeholder="Mobile" name="clas" ng-model="mobile" >
+    </div><br>
+    <div class="form-group">
+      <label for="name">Toll:</label>
+      <input type="number" ng-readonly="idReadOnly" ng-keyup="validateToll()"  class="form-control" id="toll" placeholder="Toll" name="toll" ng-model="toll">
+
+
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="name">Type:</label>
+      <input type="number" ng-readonly="idReadOnly"  class="form-control" id="type" placeholder="Type" name="type" ng-model="type">
+
+
+    </div>
+    <br>
+    <button type="submit" class="btn btn-outline-primary"  data-dismiss="modal" ng-Click="submit()" ng-disabled="disableSubmit">{{Submit}}</button>
+    
+    <button type="submit" class="btn btn-outline-primary" ng-Click="reset()" >Reset</button>
+   
+
+    <br>
+
+
+
+
+    <span ng-show="invalidtoll">
+        The value of toll must not be negative!<br></span>
+
+  <span ng-show="form.clas.$error.integer">The value is not a valid integer!<br></span>
+  <span ng-show="form.clas.$error.min || form.clas.$error.max">
+    The value of class must be in range 50000000000 to 9999999999!<br></span>
+      <span ng-show="usedId">
+        The inserted id is already in use please enter a valid Number Plate to be inserted<br></span>
+</form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <div class="modal fade" id="paytoll" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel" >Pay Toll</h4>
+      
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+        <div class="modal-body">
+
+         
+<form name="form" class="form" >
+    
+
+    <div class="form-group">
+            <label for="name">Select Your car:</label>
+             
+        <select class="browser-default custom-select" ng-model="getCar">
+        
+            <option  ng-repeat="row in data">{{row.id}}</option>
+          </select>
+        
+        </div>
+  <br>
+
+
+    <div class="form-group">
+      <label for="name">Amount:</label>
+      <input type="number"  class="form-control" id="toll" placeholder="Enter Amount" name="toll" ng-model="toll" >
+
+    </div>
+    <br>
+
+    <button type="submit" class="btn btn-outline-primary"  data-dismiss="modal" ng-Click="payToll()" ng-disabled="disableSubmit">Pay</button>
+    
+    <button type="submit" class="btn btn-outline-primary" ng-Click="reset()" >Reset</button>
+   
+
+    <br>
+
+
+
+
+
+    
+    <span ng-show="ipass != cpass">The passwords don't match<br></span>
+  
+
+      
+</form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="modal fade" id="deleteConfirmation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel" >Delete </h4>
+      
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+        <div class="modal-body">
+            {{deletemsg}}
+        </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-Click="terminateDelete()">{{delbut}}</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-Show="!invaliddelete" ng-Click="delete(currentDeleteId)">Yes</button>
+      </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+</div>
+</div>
+
+
+
+</body>
+</html>

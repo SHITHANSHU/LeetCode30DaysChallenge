@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+    </head>
+
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script src="angular.min.js"></script>
+<script src="angular-route.js"></script>
+
+<script src="script.js"></script>
+    <style>
+
+        .heading{
+            background-color: #0073b1;
+            color: azure;
+        }
+        .fa-trash 
+        {
+            color: azure;
+        }
+        .fa-edit
+        {
+            color: azure;
+        }
+        .form-inline
+        {
+            align-content: center;
+        }
+        .btn-outline-primary:hover 
+        {
+            background-color: #0073b1;
+        }
+    
+        
+
+        
+        .btn-primary:hover 
+        {
+            background-color: #0073b1;
+        }
+        
+        .btn-primary
+        {
+            color: #0073b1;
+            background-color:azure;
+        }
+    
+        body.modal-open .background-container{
+        -webkit-filter: blur(4px);
+        -moz-filter: blur(4px);
+        -o-filter: blur(4px);
+        -ms-filter: blur(4px);
+        filter: blur(4px);
+    }
+    
+        .modal-title{
+            align-content: center;
+        }
+        #myModalLabel{
+            align-content: center;
+        }
+        .modal-header{
+            align-content: center;
+        }
+    
+    .input2 .form-control
+    {
+      width:16.43%;
+    }
+    </style>
+
+
+    <title>
+        Main Pages
+    </title>
+
+
+    <body ng-app="testApp">
+
+        
+        <div ng-view></div>
+        
+        </body>
+</html>

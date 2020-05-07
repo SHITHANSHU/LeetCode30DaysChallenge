@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+</head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+
+<style>
+
+    .heading{
+        background-color: #0073b1;
+        color: azure;
+    }
+    .fa-trash 
+    {
+        color: azure;
+    }
+    .fa-edit
+    {
+        color: azure;
+    }
+    .form-inline
+    {
+        align-content: center;
+    }
+    .btn-outline-primary:hover 
+    {
+        background-color: #0073b1;
+    }
+
+    
+    .btn-primary:hover 
+    {
+        background-color: #0073b1;
+    }
+    
+    .btn-primary
+    {
+        color: #0073b1;
+        background-color:azure;
+    }
+
+    body.modal-open .background-container{
+    -webkit-filter: blur(4px);
+    -moz-filter: blur(4px);
+    -o-filter: blur(4px);
+    -ms-filter: blur(4px);
+    filter: blur(4px);
+}
+
+    .modal-title{
+        align-content: center;
+    }
+    #myModalLabel{
+        align-content: center;
+    }
+    .modal-header{
+        align-content: center;
+    }
+    .form-control 
+    {
+
+        margin-top: 20px;
+    }
+    .btn-default
+    {
+        margin-top: 20px;
+    }
+
+    .logincontainer
+    {
+        width: 40%;
+        margin-left: 30%;
+        box-shadow: 0 5px 10px 0 rgba(0,0,0,.1);
+        border-radius: 2em;
+        background-color: fafafa;
+
+    }
+
+    
+.input1 
+{
+  width:100%;
+  margin-top: 25%;
+  padding-top: 10%;
+}
+
+.form-control
+{
+    width:80%;
+    margin-left: 10%;
+}
+.one
+{
+    width:40%;
+    margin-top: 10%;
+    margin-left: 30%;
+    
+}
+.two
+{
+    width:40%;
+    margin-top: 10%;
+
+}
+
+.loginhead
+{
+    color: 0073b1;
+    text-align: center;
+}
+
+.xyz1
+{
+    background-color: fafafa !important;
+    border:none;
+    width:50% !important;
+    text-align: center;
+}
+.errmsg
+{
+    color: red;
+    text-align: center !important;
+    /* margin-left: 50% !important; */
+}
+.h6
+{
+    margin-left: 20% !important;
+}
+</style>
+
+<body >
+
+
+<div class="container">
+<div ng-controller="loginControl">
+
+    <div class="heading"><center><h1><strong >ANPR SYSTEM</strong></h1></center>
+    </div>
+    <br>
+
+    <div class="logincontainer">
+
+        
+        
+        <form name="form"  >
+           
+          <div class="input1">
+            <div class="loginhead">
+                <h2><strong>Login</strong></h2>
+            </div>
+            <span ng-show="invalidcred" class="errmsg"><h6>Invalid Credentials !</h6><br></span>
+            <input type="text"  class="form-control" id="id" placeholder="Username" name="id" ng-model="loguname" >
+            <input type="password"  class="form-control" id="id" placeholder="Password" name="name" ng-model="logpassword" >
+            <div class="form-inline ">
+                <input class="form-control" ng-model="loginchoice" ng-value="'admin'"  type="radio" name="loginchoice" text-align="center" id="Admin" value="Admin">
+                <label class="form-control xyz1" >
+                  Admin
+                </label>
+
+              </div>
+              <div class="form-inline">
+               
+                
+                <input class="form-control" ng-model="loginchoice" ng-value="'cust'" type="radio" name="loginchoice" text-align="center" id="User" value="User">
+                <label class="form-control xyz1 xyz2" >
+                  Customer
+                </label>
+              </div>
+            
+            <button type="submit" class="btn btn-outline-primary one"  ng-Click="loginmain()" >Login</button>
+           
+          </div>
+         
+        </form>
+         
+    <br>
+    <br>
+    </div>
+   
+</div>
+</div>
+
+
+
+</body>
+</html>
