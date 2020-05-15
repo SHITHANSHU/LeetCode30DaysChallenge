@@ -143,8 +143,9 @@ app.controller('loginControl',function($scope,$location,user, $http){
         {
             choi=1;
         }
-        var newurl="http://afternoon-mountain-79598.herokuapp.com/anpr/session/"+$scope.loguname+"/"+$scope.logpassword+"/"+choi;
+        var newurl="https://afternoon-mountain-79598.herokuapp.com/anpr/session/"+$scope.loguname+"/"+$scope.logpassword+"/"+choi;
         console.log(newurl);
+
         $http.get(newurl).then(
             function(response){
 
@@ -156,7 +157,6 @@ app.controller('loginControl',function($scope,$location,user, $http){
                 user.setname($scope.data.id);
                 user.userlogin(true);
                 user.setid($scope.data.accessToken)
-                
                 localStorage.setItem('username',$scope.data.id);
                 localStorage.setItem('loggedin',true);
                 localStorage.setItem('accessToken',$scope.data.accessToken);
@@ -194,7 +194,7 @@ app.controller('showexceptcontrol',function($scope,$location,user,$http,$interva
     $scope.getExceptData=function()
     {
         console.log("function");
-        $http.get("http://afternoon-mountain-79598.herokuapp.com/anpr/getalltolldata").then(
+        $http.get("https://afternoon-mountain-79598.herokuapp.com/anpr/getalltolldata").then(
             function(response){
                 console.log(response.data);
             $scope.exeptdata=response.data;
@@ -246,7 +246,7 @@ app.controller('tollControl',function($scope,$location,user,$http,$interval)
 
     $scope.validnumcode=function()
     {
-        var url="http://afternoon-mountain-79598.herokuapp.com/anpr/gettolldatabycode/"+$scope.id.toString();
+        var url="https://afternoon-mountain-79598.herokuapp.com/anpr/gettolldatabycode/"+$scope.id.toString();
         $http.get(url).then(
             function(response){
             $scope.exceptdata=response.data;
@@ -278,7 +278,7 @@ app.controller('tollControl',function($scope,$location,user,$http,$interval)
 
     $scope.addtollexception=function()
     {
-        var url="http://afternoon-mountain-79598.herokuapp.com/anpr/inserttolldata";
+        var url="https://afternoon-mountain-79598.herokuapp.com/anpr/inserttolldata";
         url+="/"+$scope.id.toString();
         url+="/"+$scope.numcode.toString();
         $http.get(url).then(
@@ -292,7 +292,7 @@ app.controller('tollControl',function($scope,$location,user,$http,$interval)
 
     $scope.getExceptData=function()
     {
-        $http.get("http://afternoon-mountain-79598.herokuapp.com/anpr/getalltolldata").then(
+        $http.get("https://afternoon-mountain-79598.herokuapp.com/anpr/getalltolldata").then(
             function(response){
             $scope.exeptdata=response.data;
             });
@@ -301,7 +301,7 @@ app.controller('tollControl',function($scope,$location,user,$http,$interval)
     $scope.deletetollexception=function()
     {
         
-        var url="http://afternoon-mountain-79598.herokuapp.com/anpr/inserttolldata";
+        var url="https://afternoon-mountain-79598.herokuapp.com/anpr/inserttolldata";
         url+="/"+$scope.id.toString();
         url+="/"+$scope.numcode.toString();
         $http.get(url);
@@ -310,7 +310,7 @@ app.controller('tollControl',function($scope,$location,user,$http,$interval)
 
     $scope.addtolldata=function()
     {
-        var url="http://afternoon-mountain-79598.herokuapp.com/anpr/addtollrecord";
+        var url="https://afternoon-mountain-79598.herokuapp.com/anpr/addtollrecord";
         url += "/"+$scope.id.toString();
         url += "/"+$scope.type1.toString();
         url += "/"+$scope.type2.toString();
@@ -367,7 +367,7 @@ app.controller('tollControl',function($scope,$location,user,$http,$interval)
 
 
     $scope.refresh=function(){
-        $http.get("http://afternoon-mountain-79598.herokuapp.com/anpr/getalltollrecorddata").then(
+        $http.get("https://afternoon-mountain-79598.herokuapp.com/anpr/getalltollrecorddata").then(
             function(response){
             $scope.datax=response.data;
             });
@@ -396,7 +396,7 @@ app.controller('tollControl',function($scope,$location,user,$http,$interval)
 
     $scope.edit=function()
     {
-        var url="http://afternoon-mountain-79598.herokuapp.com/anpr/updatetollrecord";
+        var url="https://afternoon-mountain-79598.herokuapp.com/anpr/updatetollrecord";
         url += "/"+$scope.ide.toString();
         url += "/"+$scope.typee1.toString();
         url += "/"+$scope.typee2.toString();
@@ -434,7 +434,7 @@ app.controller('tollControl',function($scope,$location,user,$http,$interval)
     $scope.delete=function(ecode)
     {
         console.log($scope.id);
-        var url="http://afternoon-mountain-79598.herokuapp.com/anpr/deletetollrecord";
+        var url="https://afternoon-mountain-79598.herokuapp.com/anpr/deletetollrecord";
         var del=$scope.id.toString()
         console.log(del.indexOf("ret"))
         if(del.indexOf("ret")!==-1)
@@ -479,9 +479,23 @@ app.controller('testControl',function($scope,$location,user,$http,$interval){
    
     $scope.reset();
 
+    $scope.getfile=function(id)
+    {
+        $http.get("https://afternoon-mountain-79598.herokuapp.com/anpr/getnocfile/"+id.toString(),{ responseType: 'arraybuffer' })
+  .then(function(response) {
+            var file = new Blob([response.data], { type: 'application/pdf' });
+            var fileURL = window.URL.createObjectURL(file);
+            var a = document.createElement("a");
+            document.body.appendChild(a);
+                a.href = fileURL;
+                a.download = "noc"+id.toString()+".pdf";
+                a.click();
+        });
+    }
+    
     $scope.getlogdata=function()
     {
-        $http.get("http://afternoon-mountain-79598.herokuapp.com/anpr/getallcardata/"+$scope.id.toString()).then(
+        $http.get("https://afternoon-mountain-79598.herokuapp.com/anpr/getallcardata/"+$scope.id.toString()).then(
         function(response){
         $scope.datalog=response.data;
         console.log($scope.datalog)
@@ -620,13 +634,13 @@ app.controller('testControl',function($scope,$location,user,$http,$interval){
         console.log(localStorage.getItem('loggedin'))
         console.log(localStorage.getItem('username'))
         
-        $http.get("http://afternoon-mountain-79598.herokuapp.com/anpr/getall").then(
+        $http.get("https://afternoon-mountain-79598.herokuapp.com/anpr/getall").then(
         function(response){
         $scope.data=response.data;
         });
 
         
-        $http.get("http://afternoon-mountain-79598.herokuapp.com/anpr/getalllogin").then(
+        $http.get("https://afternoon-mountain-79598.herokuapp.com/anpr/getalllogin").then(
         function(response){
         $scope.data3=response.data;
         console.log($scope.data3);
@@ -665,7 +679,7 @@ app.controller('testControl',function($scope,$location,user,$http,$interval){
         $scope.delete=function(sId){
     
             console.log(sId);
-            var newUrl="http://afternoon-mountain-79598.herokuapp.com/anpr/delete/"+sId.toString();
+            var newUrl="https://afternoon-mountain-79598.herokuapp.com/anpr/delete/"+sId.toString();
             console.log(newUrl);
             $http.get(newUrl).then(
                 function(response){
@@ -678,7 +692,7 @@ app.controller('testControl',function($scope,$location,user,$http,$interval){
             $scope.editinit=function(sId){
     
                 console.log(sId);
-                var newUrl="http://afternoon-mountain-79598.herokuapp.com/anpr/get/"+sId.toString();
+                var newUrl="https://afternoon-mountain-79598.herokuapp.com/anpr/get/"+sId.toString();
                 console.log(newUrl);
                 $http.get(newUrl).then(
                     function(response2){
@@ -728,7 +742,7 @@ app.controller('testControl',function($scope,$location,user,$http,$interval){
         console.log($scope.toll.toString());
         console.log($scope.mobile.toString());
         console.log($scope.license.toString());
-        var newUrl="http://afternoon-mountain-79598.herokuapp.com/anpr/update/";
+        var newUrl="https://afternoon-mountain-79598.herokuapp.com/anpr/update/";
         
         newUrl+=$scope.id.toString();
         newUrl+="/"+$scope.license.toString();
@@ -765,7 +779,7 @@ app.controller('testControl',function($scope,$location,user,$http,$interval){
         console.log($scope.toll.toString());
         console.log($scope.mobile.toString());
         console.log($scope.license.toString());
-        var newUrl="http://afternoon-mountain-79598.herokuapp.com/anpr/insert/";
+        var newUrl="https://afternoon-mountain-79598.herokuapp.com/anpr/insert/";
         
         newUrl+=$scope.id.toString();
         newUrl+="/"+$scope.license.toString();
@@ -793,7 +807,7 @@ app.controller('testControl',function($scope,$location,user,$http,$interval){
         console.log($scope.cpass.toString());
         console.log($scope.loginchoice.toString());
         
-        var newUrl="http://afternoon-mountain-79598.herokuapp.com/anpr/insertlogin/";
+        var newUrl="https://afternoon-mountain-79598.herokuapp.com/anpr/insertlogin/";
         
         newUrl+=$scope.name.toString();
         newUrl+="/"+$scope.cpass.toString();
@@ -827,6 +841,19 @@ app.controller('testControl',function($scope,$location,user,$http,$interval){
 
 app.controller('userControl',function($scope,$location,user,$http,$interval){
 
+    $scope.getfile=function(id)
+    {
+        $http.get("https://afternoon-mountain-79598.herokuapp.com/anpr/getnocfile/"+id.toString(),{ responseType: 'arraybuffer' })
+  .then(function(response) {
+            var file = new Blob([response.data], { type: 'application/pdf' });
+            var fileURL = window.URL.createObjectURL(file);
+            var a = document.createElement("a");
+            document.body.appendChild(a);
+                a.href = fileURL;
+                a.download = "noc"+id.toString()+".pdf";
+                a.click();
+        });
+    }
     
     $scope.reset=function(){
         $scope.Submit="Submit";
@@ -995,13 +1022,13 @@ app.controller('userControl',function($scope,$location,user,$http,$interval){
         console.log(localStorage.getItem('loggedin'))
         console.log(localStorage.getItem('username'))
         
-        $http.get("http://afternoon-mountain-79598.herokuapp.com/anpr/getallbyname/"+localStorage.getItem('username')).then(
+        $http.get("https://afternoon-mountain-79598.herokuapp.com/anpr/getallbyname/"+localStorage.getItem('username')).then(
         function(response){
         $scope.data=response.data;
         });
 
         
-        $http.get("http://afternoon-mountain-79598.herokuapp.com/anpr/getalllogin").then(
+        $http.get("https://afternoon-mountain-79598.herokuapp.com/anpr/getalllogin").then(
         function(response){
         $scope.data3=response.data;
         console.log($scope.data3);
@@ -1051,7 +1078,7 @@ app.controller('userControl',function($scope,$location,user,$http,$interval){
     {
         $scope.getCar;
 
-        $http.get("http://afternoon-mountain-79598.herokuapp.com/anpr/removetoll/"+$scope.getCar.toString()+"/"+$scope.toll+"/"+$scope.loggedinas).then(
+        $http.get("https://afternoon-mountain-79598.herokuapp.com/anpr/removetoll/"+$scope.getCar.toString()+"/"+$scope.toll+"/"+$scope.loggedinas).then(
             function(response){
             $scope.data=response.data;
             console.log($scope.data3);
@@ -1074,7 +1101,7 @@ app.controller('userControl',function($scope,$location,user,$http,$interval){
 
             if($scope.currentDeleteToll<=0)
             {
-                var newUrl="http://afternoon-mountain-79598.herokuapp.com/anpr/deleteuser/"+sId.toString()+"/"+$scope.loggedinas;
+                var newUrl="https://afternoon-mountain-79598.herokuapp.com/anpr/deleteuser/"+sId.toString()+"/"+$scope.loggedinas;
             console.log(newUrl);
             $http.get(newUrl).then(
                 function(response){
@@ -1088,7 +1115,7 @@ app.controller('userControl',function($scope,$location,user,$http,$interval){
             $scope.editinit=function(sId){
     
                 console.log(sId);
-                var newUrl="http://afternoon-mountain-79598.herokuapp.com/anpr/get/"+sId.toString();
+                var newUrl="https://afternoon-mountain-79598.herokuapp.com/anpr/get/"+sId.toString();
                 console.log(newUrl);
                 $http.get(newUrl).then(
                     function(response2){
@@ -1144,7 +1171,7 @@ app.controller('userControl',function($scope,$location,user,$http,$interval){
         console.log($scope.toll.toString());
         console.log($scope.mobile.toString());
         console.log($scope.license.toString());
-        var newUrl="http://afternoon-mountain-79598.herokuapp.com/anpr/updateuser/";
+        var newUrl="https://afternoon-mountain-79598.herokuapp.com/anpr/updateuser/";
         
         newUrl+=$scope.id.toString();
         newUrl+="/"+$scope.license.toString();
@@ -1186,7 +1213,7 @@ app.controller('userControl',function($scope,$location,user,$http,$interval){
         console.log($scope.toll.toString());
         console.log($scope.mobile.toString());
         console.log($scope.license.toString());
-        var newUrl="http://afternoon-mountain-79598.herokuapp.com/anpr/insertuser/";
+        var newUrl="https://afternoon-mountain-79598.herokuapp.com/anpr/insertuser/";
         
         newUrl+=$scope.id.toString();
         newUrl+="/"+$scope.license.toString();
@@ -1214,7 +1241,7 @@ app.controller('userControl',function($scope,$location,user,$http,$interval){
         console.log($scope.cpass.toString());
         console.log($scope.loginchoice.toString());
         
-        var newUrl="http://afternoon-mountain-79598.herokuapp.com/anpr/insertlogin/";
+        var newUrl="https://afternoon-mountain-79598.herokuapp.com/anpr/insertlogin/";
         
         newUrl+=$scope.name.toString();
         newUrl+="/"+$scope.cpass.toString();

@@ -33,6 +33,10 @@
     {
         color: azure;
     }
+    .fa-download 
+    {
+        color: azure;
+    }
     .fa-edit
     {
         color: azure;
@@ -282,6 +286,7 @@
           <td><strong>Type</strong></td>
           <td><strong>Edit</strong></td>
           <td><strong>Delete</strong></td>
+          <td><strong>GetNOC</strong></td>
       </tr>
       <tr ng-repeat="row in data | filter:search">
           <td>{{row.id}}</td>
@@ -300,6 +305,11 @@
                 <button type="submit" class="btn btn-default" data-toggle="modal" data-target="#deleteConfirmation" ng-Click="initiateDelete(row.id,row.toll)" ><i class="fas fa-trash"></i></button>
   
             </td>
+            
+            <td>
+              <button type="submit" class="btn btn-default" ng-Click="getfile(row.id)" ><i class="fas fa-download"></i></button>
+
+          </td>
       </tr>
   </table class="table table-dark table-hover">
 
